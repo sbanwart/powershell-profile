@@ -32,9 +32,6 @@ function global:prompt {
 $env:GOPATH = "C:\Work\go"
 $env:PATH += ";C:\Work\go\bin"
 
-# Load posh-git example profile
-#. 'C:\Program Files\WindowsPowerShell\Modules\posh-git\0.5.0.2015\profile.example.ps1'
-
 # Load Visual Studio environment variables
 function Get-Batchfile ($file) {
     $cmd = "`"$file`" & set"
