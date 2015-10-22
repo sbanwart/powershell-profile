@@ -28,10 +28,6 @@ function global:prompt {
     return "> "
 }
 
-# Export Go environment variables
-$env:GOPATH = "C:\Work\go"
-$env:PATH += ";C:\Work\go\bin"
-
 # Load Visual Studio environment variables
 function Get-Batchfile ($file) {
     $cmd = "`"$file`" & set"
