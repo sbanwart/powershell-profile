@@ -44,7 +44,7 @@ function VsVars32($version = "12.0")
     #$VsInstallPath = [System.IO.Path]::GetDirectoryName($VsKey.InstallDir)
     #$VsToolsDir = [System.IO.Path]::GetDirectoryName($VsInstallPath)
     #$VsToolsDir = [System.IO.Path]::Combine($VsToolsDir, "Tools")
-    $VsToolsDir = "C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\Tools"
+    $VsToolsDir = "C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\Tools"
     $BatchFile = [System.IO.Path]::Combine($VsToolsDir, "vsvars32.bat")
     Get-Batchfile $BatchFile
     [System.Console]::Title = "Visual Studio " + $version + " Windows Powershell"
@@ -52,3 +52,6 @@ function VsVars32($version = "12.0")
 }
 
 VsVars32
+
+# Load Chocolatey profile
+Import-Module -Name C:\ProgramData\chocolatey\helpers\chocolateyProfile.psm1
