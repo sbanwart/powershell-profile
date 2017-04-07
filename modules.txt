@@ -1,4 +1,4 @@
 Posh-Git
 PSReadline
-Jump-Location
+ZLocation
 Posh-VsVars

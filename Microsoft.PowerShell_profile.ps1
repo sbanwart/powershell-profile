@@ -10,8 +10,8 @@ Set-PSReadlineKeyHandler -Chord 'Ctrl+D,Ctrl+C' -Function CaptureScreen
 # Register Ctrl-D exit command
 Invoke-Expression "function $([char]4) { exit }"
 
-# Load Jump-Location module
-Import-Module Jump.Location
+# Load ZLocation module
+Import-Module ZLocation
 
 # Load posh-git module
 Import-Module posh-git
