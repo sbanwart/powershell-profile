@@ -1,5 +1,4 @@
-﻿# Import PSReadline
-Import-Module PSReadLine
+﻿Import-Module PSReadLine
 
 Set-PSReadLineOption -HistorySearchCursorMovesToEnd
 Set-PSReadlineKeyHandler -Key UpArrow -Function HistorySearchBackward
@@ -28,10 +27,12 @@ function global:prompt {
     return "> "
 }
 
+# Disabling VsVars since .NET Core doesn't use them, and we can always
+# load them manually in .NET Framework scritps that require them
 # Load Visual Studio environment variables
-Import-Module Posh-VsVars
+# Import-Module Posh-VsVars
 
-Set-VsVars -Version 'latest'
+# Set-VsVars -Version 'latest'
 
 # Load Chocolatey profile
 Import-Module -Name C:\ProgramData\chocolatey\helpers\chocolateyProfile.psm1
