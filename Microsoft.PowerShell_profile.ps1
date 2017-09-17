@@ -21,6 +21,9 @@ Set-Alias ls Get-ChildItemColorFormatWide -Option AllScope
 # Load ZLocation module
 # Import-Module ZLocation
 
+# Alias to jump to my working directory
+function w { Set-Location C:\Work }
+
 # Load posh-git module
 Import-Module posh-git
 
