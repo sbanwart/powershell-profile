@@ -16,10 +16,8 @@ Import-Module Get-ChildItemColor
 Set-Alias l Get-ChildItemColor -Option AllScope
 Set-Alias ls Get-ChildItemColorFormatWide -Option AllScope
 
-# Disabling ZLocation until I can figure out why it resets my
-# custom prompt settings
-# Load ZLocation module
-# Import-Module ZLocation
+# Load z module
+Import-Module z
 
 # Alias to jump to my working directory
 function w { Set-Location C:\Work }
@@ -53,7 +51,7 @@ Set-Theme Fish
 # Set-VsVars -Version 'latest'
 
 # Load Chocolatey profile
-# Import-Module -Name C:\ProgramData\chocolatey\helpers\chocolateyProfile.psm1
+Import-Module -Name C:\ProgramData\chocolatey\helpers\chocolateyProfile.psm1
 
 # Chocolatey profile
 $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
