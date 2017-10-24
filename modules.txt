@@ -1,6 +1,6 @@
 Posh-Git
 PSReadline
-ZLocation
+z
 Get-ChildItemColor
 oh-my-zsh
 
