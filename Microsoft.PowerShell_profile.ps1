@@ -58,3 +58,7 @@ $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
 if (Test-Path($ChocolateyProfile)) {
   Import-Module "$ChocolateyProfile"
 }
+
+# Setup Terraform container alias
+function terraform($cmd) {docker run -i -t hashicorp/terraform $cmd}
+Set-Alias tf terraform
