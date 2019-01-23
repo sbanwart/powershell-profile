@@ -62,3 +62,7 @@ if (Test-Path($ChocolateyProfile)) {
 # Setup Terraform container alias
 function terraform($cmd) {docker run -i -t hashicorp/terraform $cmd}
 Set-Alias tf terraform
+
+# Setup Visual Studio Code alias
+function VsCode-CurrDir() {code .}
+Set-Alias vsc VsCode-CurrDir
