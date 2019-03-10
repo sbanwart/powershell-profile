@@ -53,15 +53,20 @@ if (Test-Path($ChocolateyProfile)) {
 }
 
 # Setup Terraform container alias
-function terraform($cmd) {docker run -it hashicorp/terraform $cmd}
-Set-Alias tf terraform
+function terraform_container() {docker run --rm -it hashicorp/terraform @Args}
+Set-Alias tf terraform_container
 
 # Setup httpie container alias
-function httpie_container() {docker run -it sbanwart/httpie:1.0 @Args}
+function httpie_container() {docker run --rm -it sbanwart/httpie:1.0 @Args}
 Set-Alias httpie httpie_container
 
-function jk_container() {docker run -it sbanwart/jk @Args}
+# Setup jk container alias
+function jk_container() {docker run --rm -it -v ${pwd}:/data sbanwart/jk @Args}
 Set-Alias jk jk_container
+
+# Setup pulumi container alias
+function pulumi_container() {docker run --rm -it -v ${pwd}:/data -w /data pulumi/pulumi @Args}
+Set-Alias pulumi pulumi_container
 
 # Setup Visual Studio Code alias
 function VsCode-CurrDir() {code .}
