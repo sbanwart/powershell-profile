@@ -43,13 +43,6 @@ Import-Module oh-my-posh
 # Configure oh-my-posh theme
 Set-Theme Fish
 
-# Disabling VsVars since .NET Core doesn't use them, and we can always
-# load them manually in .NET Framework scripts that require them
-# Load Visual Studio environment variables
-# Import-Module Posh-VsVars
-
-# Set-VsVars -Version 'latest'
-
 # Load Chocolatey profile
 Import-Module -Name C:\ProgramData\chocolatey\helpers\chocolateyProfile.psm1
 
@@ -60,9 +53,22 @@ if (Test-Path($ChocolateyProfile)) {
 }
 
 # Setup Terraform container alias
-function terraform($cmd) {docker run -i -t hashicorp/terraform $cmd}
+function terraform($cmd) {docker run -it hashicorp/terraform $cmd}
 Set-Alias tf terraform
+
+# Setup httpie container alias
+function httpie_container() {docker run -it sbanwart/httpie:1.0 @Args}
+Set-Alias httpie httpie_container
+
+function jk_container() {docker run -it sbanwart/jk @Args}
+Set-Alias jk jk_container
 
 # Setup Visual Studio Code alias
 function VsCode-CurrDir() {code .}
 Set-Alias vsc VsCode-CurrDir
+
+#region conda initialize
+# !! Contents within this block are managed by 'conda init' !!
+(& C:\Users\Scott\Anaconda3\Scripts\conda.exe "shell.powershell" "hook") | Out-String | Invoke-Expression
+#endregion
+
