@@ -25,6 +25,18 @@ function w { Set-Location C:\Work }
 # Load posh-git module
 Import-Module posh-git
 
+# Set git prompt
+#function global:prompt {
+#    $realLASTEXITCODE = $LASTEXITCODE
+#
+#    Write-Host($pwd.ProviderPath) -nonewline
+#
+#    Write-VcsStatus
+#
+#    $global:LASTEXITCODE = $realLASTEXITCODE
+#    return "> "
+#}
+
 # Load oh-my-posh module
 Import-Module oh-my-posh
 
@@ -55,6 +67,9 @@ Set-Alias jk jk_container
 # Setup pulumi container alias
 function pulumi_container() {docker run --rm -it -v ${pwd}:/data -w /data pulumi/pulumi @Args}
 Set-Alias pulumi pulumi_container
+
+function curlie_container() {docker run --rm -it -v ${pwd}:/data -w /data sbanwart/curlie @Args}
+Set-Alias curlie curlie_container
 
 # Setup Visual Studio Code alias
 function VsCode-CurrDir() {code .}
