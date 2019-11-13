@@ -26,22 +26,22 @@ function w { Set-Location C:\Work }
 Import-Module posh-git
 
 # Set git prompt
-#function global:prompt {
-#    $realLASTEXITCODE = $LASTEXITCODE
-#
-#    Write-Host($pwd.ProviderPath) -nonewline
-#
-#    Write-VcsStatus
-#
-#    $global:LASTEXITCODE = $realLASTEXITCODE
-#    return "> "
-#}
+function global:prompt {
+    $realLASTEXITCODE = $LASTEXITCODE
+
+    Write-Host($pwd.ProviderPath) -nonewline
+
+    Write-VcsStatus
+
+    $global:LASTEXITCODE = $realLASTEXITCODE
+    return "> "
+}
 
 # Load oh-my-posh module
 Import-Module oh-my-posh
 
 # Configure oh-my-posh theme
-Set-Theme Paradox
+Set-Theme Sorin
 
 # Load Chocolatey profile
 Import-Module -Name C:\ProgramData\chocolatey\helpers\chocolateyProfile.psm1
