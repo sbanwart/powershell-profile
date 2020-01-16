@@ -57,7 +57,7 @@ function terraform_container() {docker run --rm -it hashicorp/terraform @Args}
 Set-Alias tf terraform_container
 
 # Setup httpie container alias
-function httpie_container() {docker run --rm -it sbanwart/httpie:1.0 @Args}
+function httpie_container() {docker run --rm -it sbanwart/httpie @Args}
 Set-Alias httpie httpie_container
 
 # Setup jk container alias
