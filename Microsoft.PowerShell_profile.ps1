@@ -22,8 +22,14 @@ Import-Module z
 # Alias to jump to my working directory
 function w { Set-Location C:\Work }
 
+# Load Starship prompt
+Invoke-Expression (&starship init powershell)
+
 # Load posh-git module
-Import-Module posh-git
+#Import-Module posh-git
+
+# Configure oh-my-posh theme
+#Set-Theme Sorin
 
 # Set git prompt
 function global:prompt {
@@ -54,15 +60,11 @@ if (Test-Path($ChocolateyProfile)) {
 
 # Setup Terraform container alias
 function terraform_container() {docker run --rm -it hashicorp/terraform @Args}
-Set-Alias tf terraform_container
+Set-Alias terraform terraform_container
 
 # Setup httpie container alias
 function httpie_container() {docker run --rm -it sbanwart/httpie @Args}
 Set-Alias httpie httpie_container
-
-# Setup jk container alias
-function jk_container() {docker run --rm -it -v ${pwd}:/data sbanwart/jk @Args}
-Set-Alias jk jk_container
 
 # Setup pulumi container alias
 function pulumi_container() {docker run --rm -it -v ${pwd}:/data -w /data pulumi/pulumi @Args}
@@ -70,6 +72,12 @@ Set-Alias pulumi pulumi_container
 
 function curlie_container() {docker run --rm -it -v ${pwd}:/data -w /data sbanwart/curlie @Args}
 Set-Alias curlie curlie_container
+
+function jrnl_container() {docker run --rm -it -v ${home}:/home/data -w /home/data -e XDG_CONFIG_HOME="/home/data/.config" sbanwart/jrnl @Args}
+Set-Alias jrnl jrnl_container
+
+function diagrams_container() {docker run --rm -it -v ${pwd}:/data -w /data sbanwart/diagrams @Args}
+Set-Alias diagrams diagrams_container
 
 # Setup Visual Studio Code alias
 function VsCode-CurrDir() {code .}
