@@ -8,7 +8,7 @@ Set-PSReadlineKeyHandler -Key DownArrow -Function HistorySearchForward
 Set-PSReadlineKeyHandler -Chord 'Ctrl+D,Ctrl+C' -Function CaptureScreen
 
 # Register Ctrl-D exit command
-Invoke-Expression "function $([char]4) { exit }"
+Set-PSReadlineKeyHandler -Key Ctrl+d -Function DeleteCharOrExit
 
 # Load and configure Get-ChildItemColor module
 Import-Module Get-ChildItemColor
@@ -19,32 +19,8 @@ Set-Alias ls Get-ChildItemColorFormatWide -Option AllScope
 # Load z module
 Import-Module z
 
-# Alias to jump to my working directory
-function w { Set-Location C:\Work }
-
-# Load posh-git module
-Import-Module posh-git
-
-# Set git prompt
-#function global:prompt {
-#    $realLASTEXITCODE = $LASTEXITCODE
-#
-#    Write-Host($pwd.ProviderPath) -nonewline
-#
-#    Write-VcsStatus
-#
-#    $global:LASTEXITCODE = $realLASTEXITCODE
-#    return "> "
-#}
-
 # Load Starship prompt
 Invoke-Expression (&starship init powershell)
-
-# Load oh-my-posh module
-#Import-Module oh-my-posh
-
-# Configure oh-my-posh theme
-#Set-Theme Sorin
 
 # Load Scoop completions
 Import-Module "$($(Get-Item $(Get-Command scoop).Path).Directory.Parent.FullName)\modules\scoop-completion"
@@ -83,7 +59,3 @@ Set-Alias diagrams diagrams_container
 function VsCode-CurrDir() {code .}
 Set-Alias vsc VsCode-CurrDir
 
-#region conda initialize
-# !! Contents within this block are managed by 'conda init' !!
-# (& C:\Users\Scott\Anaconda3\Scripts\conda.exe "shell.powershell" "hook") | Out-String | Invoke-Expression
-#endregion
