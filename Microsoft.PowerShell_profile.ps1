@@ -16,6 +16,11 @@ Import-Module Get-ChildItemColor
 Set-Alias l Get-ChildItemColor -Option AllScope
 Set-Alias ls Get-ChildItemColorFormatWide -Option AllScope
 
+# Load and configure PSFzf module
+Import-Module PSFzf
+
+Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory 'Ctrl+r'
+
 # Load z module
 Import-Module z
 
