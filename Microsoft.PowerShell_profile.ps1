@@ -40,24 +40,24 @@ if (Test-Path($ChocolateyProfile)) {
 }
 
 # Setup Terraform container alias
-function terraform_container() {docker run --rm -it hashicorp/terraform @Args}
+function terraform_container() {nerdctl run --rm -it hashicorp/terraform @Args}
 Set-Alias terraform terraform_container
 
 # Setup httpie container alias
-function httpie_container() {docker run --rm -it sbanwart/httpie @Args}
+function httpie_container() {nerdctl run --rm -it sbanwart/httpie @Args}
 Set-Alias httpie httpie_container
 
 # Setup pulumi container alias
-function pulumi_container() {docker run --rm -it -v ${pwd}:/data -w /data pulumi/pulumi @Args}
+function pulumi_container() {nerdctl run --rm -it -v ${pwd}:/data -w /data pulumi/pulumi @Args}
 Set-Alias pulumi pulumi_container
 
-function curlie_container() {docker run --rm -it -v ${pwd}:/data -w /data sbanwart/curlie @Args}
+function curlie_container() {nerdctl run --rm -it -v ${pwd}:/data -w /data sbanwart/curlie @Args}
 Set-Alias curlie curlie_container
 
-function jrnl_container() {docker run --rm -it -v ${home}:/home/data -w /home/data -e XDG_CONFIG_HOME="/home/data/.config" sbanwart/jrnl @Args}
+function jrnl_container() {nerdctl run --rm -it -v ${home}:/home/data -w /home/data -e XDG_CONFIG_HOME="/home/data/.config" sbanwart/jrnl @Args}
 Set-Alias jrnl jrnl_container
 
-function diagrams_container() {docker run --rm -it -v ${pwd}:/data -w /data sbanwart/diagrams @Args}
+function diagrams_container() {nerdctl run --rm -it -v ${pwd}:/data -w /data sbanwart/diagrams @Args}
 Set-Alias diagrams diagrams_container
 
 # Setup Visual Studio Code alias
